@@ -1,30 +1,29 @@
-import React from "react";
-import CategoryIcon from '@mui/icons-material/Category';
-import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
-import PeopleIcon from '@mui/icons-material/People';
+import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    RouterProvider,
+} from "react-router-dom";
 
-interface Route{
-    path: string;
-    content: string;
-    icon: React.ReactElement;
+import App from "../App";
+import {SignIn, SignUP, Error, Main,  Category ,} from "@pages"
+
+const index = ()=>{
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <Route path="/" element={<App />}>
+                <Route index element={<SignIn />} />
+                <Route path="/signup" element={<SignUP />} />
+                <Route path="/main/*" element={<Main />} >
+                    <Route index element={<Category />} />
+                    <Route path="*" element={<Error />} />
+                </Route>
+                <Route path="*" element={<Error />} />
+                
+            </Route>
+            )
+        );
+        return <RouterProvider router={router} />;
 }
 
-const routes: Route[] = [
-    {
-        path: "/admin-panel",
-        content: "Products",
-        icon: <ProductionQuantityLimitsIcon />
-    },
-    {
-        path: "/admin-panel/categories",
-        content: "Categories",
-        icon: <CategoryIcon />
-    },
-    {
-        path: "/admin-panel/users",
-        content: "Users",
-        icon: <PeopleIcon />
-    },
-]
-
-export default routes;
+export default index;

@@ -1,9 +1,8 @@
-import Home from './home'
-import SignIn from './signin'
-import SignUp from './signup'
-import Products from './products'
-import Product from './product'
-import Categories from './categories'
-import Users from './users'
-import Upload from "./upload"
-export { Home, SignIn, SignUp, Products, Categories, Users, Product, Upload }
+import  SignIn  from "./signin";
+import SignUP from "./signup";
+import Error from "./error";
+import Main from "./main";
+import Category from "./category";
+
+
+export { SignIn, SignUP, Error, Main , Category,};
