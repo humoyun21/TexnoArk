@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import DeleteIcon from '@mui/icons-material/Delete';
+// import DeleteIcon from '@mui/icons-material/Delete';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -31,7 +31,18 @@ const handleClose = () => {
 const logout = () =>{
     removeDataFromCookie("token")
     navigate("/")
-    window.location.reload()
+}
+
+const profile = () =>{
+    navigate("/main/profile")
+}
+
+const addAccount = () =>{
+    navigate("/signup")
+}
+
+const settings = () =>{
+    navigate("/main/settings")
 }
 
 return (
@@ -48,7 +59,7 @@ return (
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
         >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>H</Avatar>
         </IconButton>
         </Tooltip>
     </Box>
@@ -87,20 +98,20 @@ return (
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
-        <MenuItem onClick={handleClose}>
-        <Avatar /> Profile
+        <MenuItem onClick={profile}>
+            <Avatar /> Profile
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        {/* <MenuItem onClick={handleClose}>
         <DeleteIcon /> Delete Account
-        </MenuItem>
+        </MenuItem> */}
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={addAccount}>
         <ListItemIcon>
             <PersonAdd fontSize="small" />
         </ListItemIcon>
         Add another account
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={settings}>
         <ListItemIcon>
             <Settings fontSize="small" />
         </ListItemIcon>

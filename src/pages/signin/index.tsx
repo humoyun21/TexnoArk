@@ -9,6 +9,10 @@ import { Formik,Form, Field, ErrorMessage } from "formik"
 import { Visibility, VisibilityOff } from "@mui/icons-material"
 import { signInValidationSchema } from "../../utils/validations"
 import auth from "@servicesAuth"
+import Logo from "../../assets/icon/TexnoArkLogo.svg"
+
+
+
 const Index = () => {
 
     const [showPassword, setShowPassword] = useState(false)
@@ -24,9 +28,8 @@ const Index = () => {
         try {
             const response = await auth.sign_in(values)
             if (response.status === 201) {
-                
-                setDataToCookie("email",response.data.email)
-                setDataToCookie("token",response.data.access_token)
+                setDataToCookie("admin_id", response?.data?.admin?.id);
+                setDataToCookie("token",response?.data?.tokens?.access_token)
                 Notification({title:"Tizimga muvaffaqiyatli kirdingiz",type:"success"})
                 setTimeout(()=>{navigate("/main")},1000)
             }
@@ -35,13 +38,18 @@ const Index = () => {
             Notification({title:"Tizimga kirishda xatolik",type:"error"})
         }
     }
+
     return (
         <>
             <ToastContainer/>  
             <div className="h-screen flex items-center justify-center flex-col gap-8 p-5 bg-[#F0F0F0]">
-               
+                {/* <h1 className="text-[35px] font-bold sm:text-[40px] md:text-[50px]">Tizimga kirish</h1> */} 
                     
                 <div className="max-w-[400px] h-[400px] bg-[#fff] p-5 shadow-2xl rounded-[7px]">
+                    {/* <div className="flex items-center justify-center">
+                        <img src={Logo} className="mr-2 mt-3"/>
+                        <h1 className="text-[35px] font-bold sm:text-[40px] md:text-[45px]">TexnoArk</h1>
+                    </div> */}
                     <Typography component="h6" variant="h6" className="text-center">
                             SIGN IN
                     </Typography>
@@ -105,8 +113,18 @@ const Index = () => {
                                         <Button
                                         type="submit" 
                                         variant="contained" 
-                                        color="primary"
-                                        
+                                         color="primary"
+                                        sx={{
+                                          
+                                            transition: 'all 0.5s ease',
+                                            mt: 2,
+                                            mb: 2,
+                                            ":hover": {
+                                                
+                                                transition: 'all 0.5s ease',
+                                                transform: 'scale(1)'
+                                            }
+                                        }}
                                         disabled={isSubmitting}
                                         fullWidth
                                     >
