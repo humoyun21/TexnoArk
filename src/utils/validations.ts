@@ -21,8 +21,8 @@ export const signUpValidationSchema = Yup.object({
 
 //------------------|LOGIN|------------------//
 export const signInValidationSchema = Yup.object({
-        email: Yup.string()
-        .email("Invalid email address")
+        PhoneNumber: Yup.string()
+        // .email("Invalid email address")
         .required("Email is required"),
         password: Yup.string()
         .min(6, "Password must be at least 8 characters")
@@ -30,3 +30,9 @@ export const signInValidationSchema = Yup.object({
         .matches(/\d/, "Password must contain at least one number")
         .required("Password is required"),
 });
+
+export const postCategorySchema = Yup.object().shape({
+        name: Yup.string().required("Required"),
+        // parent_category_id: Yup.number().required("Required"),
+        // positon: Yup.number().required("Required"),
+      });

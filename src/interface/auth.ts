@@ -7,7 +7,7 @@ export interface SignUp {
 }
 
 export interface SignIn{
-    email:string,
+    PhoneNumber:string,
     password:string,
 }
 
