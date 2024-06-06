@@ -1,33 +1,28 @@
 import {
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
-    RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
 } from "react-router-dom";
-
 import App from "../App";
-import {SignIn, SignUP, Error, Main,  Category,Product, Brand, Profile, Settings } from "@pages"
+import { Category, Create, Login , Error, Brand , Settings} from "@pages";
+import MainLayout from "@layout"
 
-const index = ()=>{
-    const router = createBrowserRouter(
-        createRoutesFromElements(
-            <Route path="/" element={<App />}>
-                <Route index element={<SignIn />} />
-                <Route path="/signup" element={<SignUP />} />
-                <Route path="/main/*" element={<Main />} >
-                    <Route index element={<Category />} />
-                    <Route path="*" element={<Error />} />
-                    <Route path="products" element={<Product />} />
-                    <Route path="brand" element={<Brand />} />
-                    <Route path="profile" element={<Profile />} />
-                    <Route path="settings" element={<Settings />} />
-                </Route>
-                <Route path="*" element={<Error />} />
-                
-            </Route>
-            )
-        );
-        return <RouterProvider router={router} />;
+export default function Router() {
+  const root = createBrowserRouter(   
+    createRoutesFromElements(
+      <Route path="/" element={<App />}>
+        <Route index element={<Login/>}/>
+        <Route path="/signup" element={<Create/>}/>
+        <Route path="/main/*" element={<MainLayout/>}>
+          <Route index element={<Category/>}/>
+          <Route path="brands" element={<Brand/>}/>
+          <Route path="settings" element={<Settings/>}/>
+        </Route>
+        <Route path="*" element={<Error/>}/>
+      </Route>
+    )
+  );
+
+  return <RouterProvider router={root} />;
 }
-
-export default index;

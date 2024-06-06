@@ -1,5 +1,5 @@
-import request from "../config";
-import { Request } from "../../interface/auth";
+import request from "../config/http";
+import { Request } from "../../interfaces/auth";
 
 
 const auth:Request = {

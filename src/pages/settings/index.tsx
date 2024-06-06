@@ -1,39 +1,95 @@
-import swat1 from "../../assets/image/swat.jpg"
+import { useEffect , useState } from "react"
+import auth from "../../service/auth";
+import{getDataFromCookie} from "../..//utils/tokenService"
+import Logo from '../../assets/TexnoArkLogo.svg'
+import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+
 const Index = () => {
+
+    const navigate = useNavigate()
+
+    const [admin_data, setAdminData] = useState<any>({})
+
+    const getAdminDataTexno = async(id:number) => {
+        try{
+            const respons = await auth.admin_id(id)
+            if(respons.status === 200){
+                setAdminData(respons.data.data)
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
+    useEffect(()=>{
+        const admin_Id = Number(getDataFromCookie("admin-id"));
+        getAdminDataTexno(admin_Id);
+    
+    },[]);
+    const backCategory = () => {
+        navigate("/main")
+    }
+    const deleteAdmin = async (id: number) => {
+        try {
+            const response = await auth.delete_admin(id);
+            if (response.status === 200) {
+                navigate("/signup");
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const editAdmin = async(id:number) => {
+        try{
+            const response = await auth.admin_id(id)
+            if(response.status === 200){
+                navigate("/edit")
+            }   
+        }catch(err){   
+            console.log(err)
+        }
+    }
     return (
-        <>
-            {/* <!-- component --> */}
-            <div className="h-[625px] bg-gray-200  dark:bg-gray-800   flex flex-wrap items-center  justify-center  rounded-[10px]">
-            <div className="container lg:w-2/6 xl:w-2/7 sm:w-full md:w-2/3    bg-white  shadow-lg    transform   duration-200 easy-in-out">
-                <div className=" h-32 overflow-hidden" >
-                    <img className="w-full" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
-                </div>
-                <div className="flex justify-center px-5  -mt-12">
-                    <img className="h-32 w-32 bg-white p-2 rounded-full   " src={swat1} alt="" />
-
-                </div>
-                <div className=" ">
-                    <div className="text-center px-14">
-                        <h2 className="text-gray-800 text-3xl font-bold">Muhammadayub Mahmudov</h2>
-                        <a className="text-gray-400 mt-2 hover:text-blue-500" href="https://www.instagram.com/mahmudov._.701/" target="BLANK()">@mahmudov._.701</a>
-                        <p className="mt-2 text-gray-500 text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+        <div className="h-[623px] items-center justify-center flex-col gap-8 p-5 bg-[#FFF] rounded-[10px]">
+            <div className="flex">
+                <div className='w-[700px] border border-solid ml-5 rounded-[10px] bg-[#F0F0F0]'>
+                    <div className='w-[650px] h-[80px] bg-[#FFF] shadow-2xl rounded-[10px] flex ml-5 mt-5'>
+                        <img src={Logo} className='w-[60px] h-[60px] ml-7 mt-3'/>
+                        <h1 className='text-[35px] font-bold ml-2 mt-3'>TexnoArk </h1>
+                        <Button
+                            variant='contained'
+                            sx={{
+                                ml:'auto',mr:2,mt:2,
+                                width:150, 
+                                height:50,
+                                bgcolor:'#1EB91E',
+                                color:'#FFF',
+                                ":hover":{bgcolor:'#1EB91E'
+                        }}}
+                        onClick={backCategory}
+                        >  
+                            Back
+                        </Button>
                     </div>
-                    <hr className="mt-6" />
-                    <div className="flex  bg-gray-50 ">
-                        <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                            <p><span className="font-semibold">2.5 k </span> Followers</p>
-                        </div>
-                        <div className="border"></div>
-                        <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                            <p> <span className="font-semibold">2.0 k </span> Following</p>
+                    <div className='w-[650px] h-[440px] bg-[#FFF] shadow-2xl rounded-[10px] ml-5 mt-5 flex gap-3'>
+                        <div className="w-[310px] pt-10 ">
+                            <h1 className="font-semibold ml-[20px] text-lg text-gray-600 ">Ismi: {admin_data?.first_name}</h1>
+                            <h1 className="font-semibold ml-[20px] text-lg text-gray-600 mt-3">Familiyasi: {admin_data?.last_name}</h1>
+                            <h1 className="font-semibold ml-[20px] text-lg text-gray-600 mt-3">Telefon raqami: {admin_data?.phone_number}</h1>
+                            <h1 className="font-semibold ml-[20px] text-lg text-gray-600 mt-3">Email: {admin_data?.email}</h1>
                         </div>
 
+                        <div className="w-[330px] pt-10">
+                            <h1  className="font-semibold ml-[20px] text-lg text-gray-600 ">Created Data:{admin_data?.createdAt ? admin_data?.createdAt.slice(0, 10) :"" }</h1>
+                            <h1  className="font-semibold ml-[20px] text-lg text-gray-600 ">Updated Data:{admin_data?.updatedAt ? admin_data.updatedAt.slice(0,10) : ""}</h1>
+                        </div>
+                        
+                        
                     </div>
                 </div>
             </div>
-            </div>
-        </>
+            
+        </div>
     )
 }
-
 export default Index
