@@ -15,6 +15,7 @@ import root from "@router-root";
 import { Divider, ListItemButton, ListItemIcon } from "@mui/material";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { Menu } from "@ui";
+import logo from "../assets/Group 1.png"
 
 const drawerWidth = 240;
 
@@ -36,7 +37,10 @@ const ResponsiveDrawer = () => {
 
   const drawer = (
     <div>
-      <Toolbar />
+      <div className="p-3 ">
+      <img src={logo} alt="" />
+      </div>
+     
       <Divider />
       <List>
         {root?.map((items: any, index: any) => (

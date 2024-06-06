@@ -1,32 +1,43 @@
+// import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import "./style.css"
 
-export default function index() {
-    const navigate = useNavigate();
+import "./style.css";
+
+function index() {
+  const navigate = useNavigate();
+
+  const navigetBtn = () => {
+    if (localStorage.getItem("token")) {
+      navigate("/home");
+    }else{
+        navigate("/"); 
+    }
+  };
+
+
   return (
-    <div className="error-body">
-      <div className="room">
-        <div className="cuboid">
-          <div className="side"></div>
-          <div className="side"></div>
-          <div className="side"></div>
-        </div>
-        <div className="oops">
-          <h2>OOPS!</h2>
-          <p>We can't find the page that you're looking for :(</p>
-        </div>
-        <div className="center-line">
-          <div className="hole">
-            <div className="ladder-shadow"></div>
-            <div className="ladder"></div>
-          </div>
-          <div className="four">4</div>
-          <div className="four">4</div>
-          <div className="btn cursor-pointer    ">
-            <a onClick={()=>(navigate("/"))}>BACK TO HOME</a>
+    <section className="page_404">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 ">
+            <div className="col-sm-10 col-sm-offset-1  text-center">
+              <div className="four_zero_four_bg">
+                <h1 className="text-center ">404</h1>
+              </div>
+
+              <div className="contant_box_404">
+                <h3 className="h2">Look like you're lost</h3>
+
+                <p>the page you are looking for not avaible!</p>
+
+                <button onClick={()=>navigetBtn()} className="link_404">Go to Home</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
+
+export default index;
