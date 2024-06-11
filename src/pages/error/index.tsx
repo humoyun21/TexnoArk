@@ -1,19 +1,17 @@
-// import { useEffect } from 'react'
+
 import { useNavigate } from "react-router-dom";
 
-import "./style.css";
+import "./style.scss";
 
 function index() {
   const navigate = useNavigate();
 
   const navigetBtn = () => {
-    if (localStorage.getItem("token")) {
-      navigate("/home");
-    }else{
-        navigate("/"); 
-    }
+
+    navigate("/main"); 
   };
 
+  
 
   return (
     <section className="page_404">
