@@ -6,9 +6,22 @@ export interface postData {
     price: number;
     brand_id: number;
     brand_category_id: number;
-    category_id: number;
+    category_id?: number;
+    product_id?:number;
 }
 
+export interface ProductDetels{
+    quantity: number| string;
+    colors:number;
+    description:string;
+    discount: number| string;
+    product_id: number;
+}
+
+export interface UpdateProductDetels{
+    id:number|undefined;
+    putDataDetels: ProductDetels;
+}
 
 export interface UpdateData {
     id: number;
@@ -33,7 +46,7 @@ interface Product{
     delete : (id:string)=> any,
     update : (data:UpdateData)=> any,
     getId : (id:number)=> any,
-
+    updateProductDetels : (data:UpdateProductDetels)=> any,
     getProductsBrandId :(id:number)=> any,
 }
 
@@ -49,6 +62,7 @@ export interface StoreProduct{
     updateProduct: (data:UpdateData)=> Promise <any>;
     getProductId: (id:number)=> Promise <any>;
 
+    updateProductDetels : (data:UpdateProductDetels)=> Promise <any>;
 
     getProductsBrandId: (id:number)=> Promise <any>;
 }
@@ -63,5 +77,7 @@ export const product:Product = {
     update: (data)=> request.patch(`/products/update/${data.id}`, data.putData),
     getId: (id)=> request.get(`/products/${id}`),
 
-    getProductsBrandId: (id)=> request.get(`/products/brand/${id}`)
+    getProductsBrandId: (id)=> request.get(`/products/brand/${id}`),
+    updateProductDetels : (data)=> request.patch(`/product-detail/update/${data.id}`, data.putDataDetels),
 }
+

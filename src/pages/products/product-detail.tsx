@@ -4,6 +4,7 @@ import ImageGallery from "react-image-gallery";
 
 import ProductDrawer from '../../components/ui/product-drawer'
 import useProductStore from "../../store/product-store";
+import DraeverTest from "../../components/ui/test"
 import "./style.scss"
 
 function index() {
@@ -58,11 +59,12 @@ function index() {
             <p className="flex items-center justify-between pb-[2px] border-b  mb-2 ">Product discount indicator : <span className="text-red-500 pl-2">{productsId?.product_detail?.discount} %</span> </p>
             <del className=" text-gray-500 font-serif flex justify-end">{productsId?.product?.price} $</del> 
             <p className='flex items-center justify-between pb-[2px] border-b  mb-2 '>Price : <span className=" text-red-500"> {Math.ceil(productsId?.product?.price - (productsId?.product?.price / 100) * productsId?.product_detail?.discount) } $</span></p>  
-            <div className='flex items-center justify-between'>
-
-                <div className="flex items-center gap-3 ">
+            <div className="flex items-center justify-end">
+                  <div className="flex items-center justify-end gap-3 mt-2">
+                    <ProductDrawer data={productsId?.product_detail} id={productsId?.product?.id} />
+                    
+                  </div>
                 </div>
-            </div>
 
             <div className=' pt-10 flex flex-col gap-3'>
                 <div className='flex items-center gap-4'>
@@ -100,7 +102,7 @@ function index() {
                     <p className="flex items-center justify-between pb-1 border-b ">Product price : <span className="text-[#D56E00] font-medium">{productsId?.product?.price} $</span></p>
                     <div className="flex items-center justify-between">
                         <p>Add product details :</p>
-                        <ProductDrawer/>
+                        < DraeverTest id={productId} />
                     </div>
                     </div>
                 </div>

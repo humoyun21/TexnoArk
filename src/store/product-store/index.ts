@@ -87,7 +87,18 @@ const useProductStore = create <StoreProduct> ((set)=>({
                         console.log(error)
                     }
         },
-
+        updateProductDetels : async(data)=>{
+            try{
+                const respons = await product.updateProductDetels(data)
+                if(respons?.status === 200){
+                    // set((state)=>({productsId: {...state.productsId,...data.putData}}))
+                    return respons?.status
+                }
+                
+                }catch(error:any){
+                    console.log(error)
+                }
+    },
         // deleteProductDetels: async(id)=>{
         //     try{
         //        const respons = await product.deleteProducDetels(id)
