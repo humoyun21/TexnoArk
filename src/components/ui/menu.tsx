@@ -1,19 +1,21 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-
+// import DeleteIcon from '@mui/icons-material/Delete';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-
+// import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { removeDataFromCookie } from "@data-service";
 import { useNavigate } from 'react-router-dom';
+
+
 
 export default function AccountMenu() {
 const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -46,7 +48,8 @@ const settings = () =>{
 return (
     <React.Fragment>
     <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-    
+        {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
+        <Typography sx={{ minWidth: 100 }}>Profile</Typography> */}
         <Tooltip title="Account settings">
         <IconButton
             onClick={handleClick}
@@ -98,6 +101,9 @@ return (
         <MenuItem onClick={profile}>
             <Avatar /> Profile
         </MenuItem>
+        {/* <MenuItem onClick={handleClose}>
+        <DeleteIcon /> Delete Account
+        </MenuItem> */}
         <Divider />
         <MenuItem onClick={addAccount}>
         <ListItemIcon>

@@ -10,7 +10,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material"
 import { signUpValidationSchema } from "../../utils/validations"
 import auth from "@servicesAuth"
 import { useMask } from "@react-input/mask"
-import "./style.scss";
+import Logo from "../../assets/icon/TexnoArkLogo.svg"
 
 
 
@@ -53,11 +53,14 @@ const Index = () => {
     return (
         <>
             <ToastContainer/>  
-            <div className="sigin-wrap  h-screen flex items-center justify-center flex-col gap-8 p-5  bg-[#F0F0F0]">
+            <div className="h-screen flex items-center justify-center flex-col gap-8 p-5  bg-[#F0F0F0]">
                 {/* <h1 className="text-[35px] font-bold sm:text-[40px] md:text-[50px]">Tizimga kirish</h1> */} 
                     
-                <div className="max-w-[400px] h-[600px] bg-[#fff] p-5 shadow-2xl rounded-[7px]">
-                    
+                <div className="max-w-[400px] h-[650px] bg-[#fff] p-5 shadow-2xl rounded-[7px]">
+                    <div className="flex items-center justify-center">
+                        <img src={Logo} className="mr-2 mt-3"/>
+                        <h1 className="text-[35px] font-bold sm:text-[40px] md:text-[45px]">TexnoArk</h1>
+                    </div>
                     <Typography component="h6" variant="h6" className="text-center">
                             SIGN UP
                     </Typography>
@@ -137,7 +140,7 @@ const Index = () => {
                                         name="password"
                                         type={showPassword ? 'text' : "password"}
                                         as={TextField}
-                                        label="Password"
+                                        label="Parol"
                                         className="w-full"
                                         margin="normal"
                                         variant="outlined"
@@ -170,14 +173,14 @@ const Index = () => {
                                         <Button
                                         type="submit" 
                                         variant="contained" 
-                                        color="primary"
+                                        // color="primary"
                                         sx={{
-                                         
+                                            bgcolor: '#F07427',
                                             transition: 'all 0.5s ease',
                                             mt: 2,
                                             mb: 2,
                                             ":hover": {
-                                            
+                                                bgcolor: '#D55200',
                                                 transition: 'all 0.5s ease',
                                                 transform: 'scale(1)'
                                             }

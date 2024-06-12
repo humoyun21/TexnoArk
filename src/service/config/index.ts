@@ -7,8 +7,6 @@ const request = axios.create({
 
 request.interceptors.request.use((config)=>{
     const token = getDataFromCookie("access_token")
-  
-    
 
     if(token){
         config.headers["Authorization"] = `Bearer ${token}`

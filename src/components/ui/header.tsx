@@ -1,7 +1,8 @@
-import { AppBar, CssBaseline, IconButton,  Toolbar, Typography } from '@mui/material'
+import { AppBar, CssBaseline, IconButton, InputBase, Paper, Toolbar, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import AccountMenu from './menu'
-
+// import React from 'react'
+import  SearchIcon from "@mui/icons-material/Search"
 
 
 const drawerWidth = 240
@@ -12,6 +13,11 @@ interface ModalProps {
 
 const Header = ({handleDrawerToggle}:ModalProps) => {
 
+    // const handleDrawerToggle = () => {
+    //     if (!isClosing) {
+    //         setMobileOpen();
+    //     }
+    // };
 
     return (
         <>
@@ -25,7 +31,7 @@ const Header = ({handleDrawerToggle}:ModalProps) => {
                 }}
             >
                 <Toolbar>
-                   
+                    
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"

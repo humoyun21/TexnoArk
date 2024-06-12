@@ -7,11 +7,12 @@ import useBrandCategoryStore from "../../store/brand-category";
 import GlobalTable from "../../components/ui/table";
 import GlobalSearch from "../../components/ui/search";
 import  ModalBrandCategory from "../../components/modals/brand-category";
-function index() {
+    function index() {
     const navigate = useNavigate();
     const [change, setChange] = useState("")
     const [parms , setParams] = useState({limit: 10, page:1 , search:change})
-    const {getBrandCategory, dataBrandsCategory ,  isLoader} = useBrandCategoryStore();
+    const {getBrandCategory, dataBrandsCategory ,  isLoader } = useBrandCategoryStore();
+    // const totleCuont2 = Math.ceil(totlCount / parms?.limit)
     
     useEffect(() => {
         getBrandCategory(parms);
@@ -36,7 +37,7 @@ function index() {
         {title: "S/N" , value:"t/r"},
         {title: "Brand Category" , value:"name"},
         {title: "Brand ID" , value:"brand_id"},
-        {title: "Action" , value:"action5"}
+        {title: "Action" , value:"action4"}
     ]
 
     const hendalChange = (e:any)=>{
@@ -56,7 +57,8 @@ function index() {
         <ModalBrandCategory title="post"/>
         </div>
         <GlobalTable heders={theder} body={dataBrandsCategory} skelatonLoader={isLoader}/>
+        {/* <GlobalPogination totleCuont={totleCuont2} page={parms?.page} setParams={changePage} /> */}
     </>
-}
+    }
 
-export default index
+    export default index

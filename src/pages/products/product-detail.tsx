@@ -23,7 +23,6 @@ function index() {
 
 
     return <>
-
         {
             isLoader ? <div>Loader ...</div>
             : <div>
@@ -48,27 +47,24 @@ function index() {
                 />
                     
                 }
-            {/* <img  className=" max-h-[450px] w-full h-full" src={product?.image_url ? product?.image_url[0] : "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"} alt={product?.product_name} /> */}
                 </div>
                 <div className="p-2 md:max-w-[330px] lg:max-w-[550px] w-full">
             <h1 className="text-center text-[22px]">{productsId?.product?.name}</h1>
             <p className="py-3 text-gray-600">Product description : {productsId?.product_detail?.description}</p>
-            
             <p className="flex items-center justify-between pb-[2px] border-b mb-2 ">Product colors : <span className=" text-gray-500 pl-2"> {productsId?.product_detail?.colors && productsId?.product_detail?.colors.map((el:any)=>{
             return <span key={el} className="   pl-3">{el}  </span>
             })}</span></p>
-            <p className="flex items-center justify-between pb-[2px] border-b mb-2 ">Product quantity : <span className="text-green-500 pl-2">{productsId?.product_detail?.quantity} ta</span></p>
-            <p className="flex items-center justify-between pb-[2px] border-b  mb-2 ">Product discount indicator : <span className="text-green-500 pl-2">{productsId?.product_detail?.discount} %</span> </p>
+            <p className="flex items-center justify-between pb-[2px] border-b mb-2 ">Product quantity : <span className="text-red-500 pl-2">{productsId?.product_detail?.quantity} ta</span></p>
+            <p className="flex items-center justify-between pb-[2px] border-b  mb-2 ">Product discount indicator : <span className="text-red-500 pl-2">{productsId?.product_detail?.discount} %</span> </p>
             <del className=" text-gray-500 font-serif flex justify-end">{productsId?.product?.price} $</del> 
-            <p className='flex items-center justify-between pb-[2px] border-b  mb-2 '>Price : <span className=" text-green-500"> {Math.ceil(productsId?.product?.price - (productsId?.product?.price / 100) * productsId?.product_detail?.discount) } $</span></p>  
+            <p className='flex items-center justify-between pb-[2px] border-b  mb-2 '>Price : <span className=" text-red-500"> {Math.ceil(productsId?.product?.price - (productsId?.product?.price / 100) * productsId?.product_detail?.discount) } $</span></p>  
             <div className='flex items-center justify-between'>
 
                 <div className="flex items-center gap-3 ">
-               
                 </div>
             </div>
 
-            {/* <div className=' pt-10 flex flex-col gap-3'>
+            <div className=' pt-10 flex flex-col gap-3'>
                 <div className='flex items-center gap-4'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
     <path d="M8 19C8.53043 19 9.03914 18.7893 9.41421 18.4142C9.78929 18.0391 10 17.5304 10 17C10 16.4696 9.78929 15.9609 9.41421 15.5858C9.03914 15.2107 8.53043 15 8 15C7.46957 15 6.96086 15.2107 6.58579 15.5858C6.21071 15.9609 6 16.4696 6 17C6 17.5304 6.21071 18.0391 6.58579 18.4142C6.96086 18.7893 7.46957 19 8 19V19ZM18 19C18.5304 19 19.0391 18.7893 19.4142 18.4142C19.7893 18.0391 20 17.5304 20 17C20 16.4696 19.7893 15.9609 19.4142 15.5858C19.0391 15.2107 18.5304 15 18 15C17.4696 15 16.9609 15.2107 16.5858 15.5858C16.2107 15.9609 16 16.4696 16 17C16 17.5304 16.2107 18.0391 16.5858 18.4142C16.9609 18.7893 17.4696 19 18 19V19Z" stroke="#240E00" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -91,21 +87,20 @@ function index() {
                 </svg>
                 <p>Estimated delivery is 1 to 3 days</p>
                 </div>
-            </div> */}
+            </div>
                 </div>
             </div>
 
 
 
                 : <div className="w-full h-full ">
-                {/* <button className=" py-2 px-2 rounded-md mb-5 hover:shadow-md duration-300"><KeyboardReturnIcon/></button> */}
                 <div className="">
                     <div className="flex flex-col gap-2 max-w-[400px]">
-                    <h1 className="flex items-center justify-between pb-1 border-b ">Product name : <span className=" font-medium">{productsId?.product?.name}</span></h1>
-                    <p className="flex items-center justify-between pb-1 border-b ">Product price : <span className="-green-600 font-medium">{productsId?.product?.price} $</span></p>
+                    <h1 className="flex items-center justify-between pb-1 border-b ">Product name : <span className="text-[#D56E00] font-medium">{productsId?.product?.name}</span></h1>
+                    <p className="flex items-center justify-between pb-1 border-b ">Product price : <span className="text-[#D56E00] font-medium">{productsId?.product?.price} $</span></p>
                     <div className="flex items-center justify-between">
                         <p>Add product details :</p>
-                        <ProductDrawer id={productId} />
+                        <ProductDrawer/>
                     </div>
                     </div>
                 </div>
@@ -114,13 +109,6 @@ function index() {
             </div>
         }   
     </>  
-
-// return
-// <>
-// <h1>loading</h1>
-// </>
 }
-
-
 
 export default index

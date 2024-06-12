@@ -11,6 +11,7 @@ import React from "react";
 import Logo1 from "../../assets/icon/TexnoArkLogo.svg";
 import Header from './header'
 
+
 const drawerWidth = 240;
 
 interface Props {
@@ -22,6 +23,12 @@ export default function Layout(props:Props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
+
+
+        // const handleDrawerClose = () => {
+        //     setIsClosing(true);
+        //     setMobileOpen(!mobileOpen);
+        // };
     const handleDrawerTransitionClose = () => {
         setIsClosing(false);
     };
@@ -40,7 +47,7 @@ export default function Layout(props:Props) {
             <Divider/>
             <List>
                 {routes.map((item,index) => (
-                    <NavLink to={item.path} key={index} className={item.path === pathname ? "block bg-green-500 text-white" : ""}>
+                    <NavLink to={item.path} key={index} className={item.path === pathname ? "block bg-green-600 text-white" : ""}>
                         <ListItem disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
@@ -94,7 +101,7 @@ export default function Layout(props:Props) {
                     open
                 >
                     <div 
-                        className="h-[100px] w-full flex items-center justify-center " 
+                        className="h-[100px] w-full flex items-center justify-center flex" 
                         // onClick={handleDrawerToggle}
                     >
                         <img src={Logo1} alt="Logo" className="w-12 h-32 " />

@@ -29,19 +29,15 @@ const useBrandStore = create <StoreBrand> ((set)=>({
         
     },
     postBrand: async(data)=>{
-        
-        
-        const token = getDataFromCookie("access_token")
-
-
+        const tokenPost = getDataFromCookie("access_token");
         try {
             const response = await axios.post('https://ecomapi.ilyosbekdev.uz/brand/create', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    Authorization: `Bearer ${token}`
+                    Authorization : `Bearer ${tokenPost}`
                 },
             });
-            getDataFromCookie("acsses_token");
+            
             // console.log(response);
             if (response.status === 201) {
                 set((state) => ({ dataBrands: state.dataBrands.length < 10 ? [...state.dataBrands, response?.data?.data] : [...state.dataBrands] }));

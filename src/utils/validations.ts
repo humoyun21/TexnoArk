@@ -37,6 +37,13 @@ export const brandValidationSchema = Yup.object().shape({
         file: Yup.string().required("Image is required")
 });
 
+export const brandValidationSchemaUpdete = Yup.object().shape({
+        name: Yup.string().required("Name is required"),
+        description: Yup.string().required("Description is required"),
+        categoryId: Yup.number().min(0, "must be at least greater than 0").required("Position is required")
+});
+
+
 //-----------------Br-Category----------------//
 export const brandCategoryValidationSchema = Yup.object().shape({
         name: Yup.string().required("Name is required"),
@@ -51,3 +58,12 @@ export const productDetailValidationSchema = Yup.object().shape({
         file: Yup.string().required("Image is required")
 });
 
+
+//-------------Stock-----------------------//
+
+export const stockValidationSchema = Yup.object().shape({
+        quantity: Yup.number().min(0, "must be at least greater than 0"),
+        category_id: Yup.number().min(0, "must be at least greater than 0"),
+        product_id: Yup.number().min(0, "must be at least greater than 0"),
+        brand_id: Yup.number().min(0, "must be at least greater than 0"),
+});
